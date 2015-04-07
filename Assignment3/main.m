@@ -184,6 +184,105 @@ int main(int argc, const char * argv[]) {
         for (int i=0; i<4; i++) {
             NSLog(@"The year at index %d is: %d", i, years[i]);
         }
+        
+        // Pointers
+        
+        int year = 1967;          // Define a normal variable
+        int *pointer;             // Declare a pointer that points to an int
+        pointer = &year;          // Find the memory address of the variable
+        NSLog(@"%d", *pointer);   // Dereference the address to get its value
+        *pointer = 1990;          // Assign a new value to the memory address
+        NSLog(@"%d", year);       // Access the value via the variable
+        
+        char model[5] = {'H', 'o', 'n', 'd', 'a'};
+        char *modelPointer = &model[0];
+        for (int i=0; i<5; i++) {
+            NSLog(@"Value at memory address %p is %c",
+                  modelPointer, *modelPointer);
+            modelPointer++;
+        }
+        NSLog(@"The first letter is %c", *(modelPointer - 5));
+        
+        // The Null Pointer
+        
+        // int year = 1967; already defined
+        // int *pointer = &year; already defined
+        NSLog(@"%d", *pointer);     // Do something with the value
+        pointer = NULL;             // Then invalidate it
+        
+        
+        // Void Pointers
+        
+        void *genericPointer = &year;
+        int *intPointer = (int *)genericPointer;
+        NSLog(@"%d", *intPointer);
+        
+        // Pointers in Objective-C
+        
+        
+        NSString *modelString = @"Honda";
+        
+        NSString *anObject;    // An Objective-C object
+        anObject = NULL;       // This will work
+        anObject = nil;        // But this is preferred
+        int *aPointer;         // A plain old C pointer
+        aPointer = nil;        // Don't do this
+        aPointer = NULL;       // Do this instead
+        
+        // Challenge 2
+        
+        NSLog(@"THis is my second day at bitmaker labs");
+        
+        // Challenge 3
+        
+        int n;
+        n = 1;
+        NSLog (@"Testing...");
+        NSLog (@"....%i", n);
+        NSLog (@"...%i", n + 1);
+        NSLog (@"..%i", n + 2);
+        
+        // Answer
+        /* Testing...
+         ....1
+         ...2
+         ..3
+         */
+        
+        //
+        
+        // Challenge 4
+        
+        int value1 = 15;
+        int value2 = 87;
+        
+        int answer;
+        answer = value2 - value1;
+        
+        NSLog(@"%d - %d = %d", value2, value1, answer);
+        
+        // Challenge 5
+        int sum;
+        /* COMPUTE RESULT */
+        sum = 25 + 37 - 19;
+         /* DISPLAY RESULTS */
+         NSLog (@"The answer is %i", sum);
+        
+        // Challenge 6
+        
+        int answer2, result;
+        answer2 = 100;
+        result = answer2 - 10;
+        NSLog (@"The result is %i\n", result + 5);
+        
+        /* Answer
+        
+        "The result is 95"
+         
+         */
+        
+        
+        
 
     }
     return 0;
