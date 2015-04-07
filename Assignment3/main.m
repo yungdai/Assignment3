@@ -8,6 +8,29 @@
 
 #import <Foundation/Foundation.h>
 
+#define PI 3.14159
+#define RAD_TO_DEG(radians) (radians * (180.0 / PI))
+
+// Typedef declaration
+
+typedef unsigned char ColorComponent;
+
+// Typedef Structs
+
+typedef struct {
+    unsigned char red;
+    unsigned char green;
+    unsigned char blue;
+} Color;
+
+// Typedef Enums
+typedef enum {
+    FORD,
+    HONDA,
+    NISSAN,
+    PORSCHE,
+} CarModel;
+
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         // Assignment 3
@@ -113,12 +136,55 @@ int main(int argc, const char * argv[]) {
         }
         
         // For-in loops ("Fast-enumeration," specific to Objective-C)
+        
         NSArray *models = @[@"Ford", @"Honda", @"Nissan", @"Porsche"];
         for (id model in models) {
             NSLog(@"%@", model);
         }
         
-        NSLog(@"Hello, World!");
+        // Macro's
+        
+        double angle = PI / 2;              // 1.570795
+        NSLog(@"%f", RAD_TO_DEG(angle));    // 90.0
+        
+        // Typedef
+        
+        ColorComponent red = 255;
+        ColorComponent green = 160;
+        ColorComponent blue = 0;
+        NSLog(@"Your paint job is (R: %hhu, G: %hhu, B: %hhu)",
+              red, green, blue);
+        
+        //Typedef Structs
+        
+        Color carColor = {255, 160, 0};
+        NSLog(@"Your paint job is (R: %hhu, G: %hhu, B: %hhu)",
+              carColor.red, carColor.green, carColor.blue);
+        
+        // Enums
+        
+        CarModel myCar = NISSAN;
+        switch (myCar) {
+            case FORD:
+            case PORSCHE:
+                NSLog(@"You like Western cars?");
+                break;
+            case HONDA:
+            case NISSAN:
+                NSLog(@"You like Japanese cars?");
+                break;
+            default:
+                break;
+        }
+        
+        // Primative Arrays
+        
+        int years[4] = {1968, 1970, 1989, 1999};
+        years[0] = 1967;
+        for (int i=0; i<4; i++) {
+            NSLog(@"The year at index %d is: %d", i, years[i]);
+        }
+
     }
     return 0;
 }
